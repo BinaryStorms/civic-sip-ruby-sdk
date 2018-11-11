@@ -7,3 +7,6 @@ group :development, :test do
   gem 'rake', '~> 10.0'
   gem 'rspec', '~> 3.0'
 end
+
+# HTTP client
+gem 'faraday', '0.15.2'
