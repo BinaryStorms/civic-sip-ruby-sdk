@@ -7,6 +7,7 @@ group :development, :test do
   gem 'rake', '~> 10.0'
   gem 'rspec', '~> 3.0'
   gem 'webmock', '~> 3.4'
+  gem 'coveralls', require: false
 end
 
 # HTTP client
