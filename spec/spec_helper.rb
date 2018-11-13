@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'webmock/rspec'
 require 'coveralls'
 
+ENV['CIVIC_SIP_SDK_ENV'] = 'test'
 Coveralls.wear!
 
 RSpec.configure do |config|

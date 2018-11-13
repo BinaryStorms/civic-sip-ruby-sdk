@@ -13,9 +13,8 @@ module CivicSIPSdk
     PUBLIC_HEX = '049a45998638cfb3c4b211d72030d9ae8329a242db63bfb0076a54e7647370a8ac5708b57af6065805d5a6be72332620932dbb35e8d318fce18e7c980a0eb26aa1'
     MIMETYPE_JSON = 'application/json'
 
-    ENV_VAR = 'ENVIRONMENT'
-    RAILS_ENV = 'RAILS_ENV'
-    PRODUCTION_ENV = 'production'
+    ENV_VAR = 'CIVIC_SIP_SDK_ENV'
+    TEST_ENV = 'test'
 
     HTTP_REQUEST_METHOD = :POST
 
@@ -25,6 +24,7 @@ module CivicSIPSdk
     #   * <tt>config</tt> - an instance of CivicSIPSdk::AppConfig
     def initialize(config:)
       @config = config
+      @test_env = ENV[ENV_VAR] == TEST_ENV
     end
 
     # Exchange authorization code in the form of a JWT Token for the user data
@@ -43,8 +43,7 @@ module CivicSIPSdk
           'Content-Length' => json_body_str.size.to_s,
           'Authorization' => authorization_header(target_path: AUTH_CODE_PATH, body: json_body_str)
         },
-        body: json_body_str,
-        debug_output: ENV[ENV_VAR] == PRODUCTION_ENV || ENV[RAILS_ENV] == PRODUCTION_ENV ? nil : STDOUT
+        body: json_body_str
       )
 
       unless response.code == 200
@@ -80,7 +79,7 @@ module CivicSIPSdk
       decoded_token = Crypto.decode_jwt_token(
         token: response['data'],
         public_hex_key: PUBLIC_HEX,
-        should_verify: ENV[ENV_VAR] == PRODUCTION_ENV || ENV[RAILS_ENV] == PRODUCTION_ENV
+        should_verify: !@test_env
       )
       data_text = if response['encrypted']
                     # decrypt the data attr
