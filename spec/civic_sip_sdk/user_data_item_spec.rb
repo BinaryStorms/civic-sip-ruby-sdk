@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'binary_storms/civic_sip_sdk/user_data_item'
+require 'civic_sip_sdk/user_data_item'
 
-RSpec.describe BinaryStorms::CivicSIPSdk::UserDataItem do
+RSpec.describe CivicSIPSdk::UserDataItem do
   let(:user_data_item) do
-    BinaryStorms::CivicSIPSdk::UserDataItem.new(
+    CivicSIPSdk::UserDataItem.new(
       label: 'user.email',
       value: 'company.owner@example.com',
       is_valid: true,

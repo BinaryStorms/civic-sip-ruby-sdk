@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 require 'json'
-require 'binary_storms/civic_sip_sdk/crypto'
+require 'civic_sip_sdk/crypto'
 
-RSpec.describe BinaryStorms::CivicSIPSdk::Crypto do
+RSpec.describe CivicSIPSdk::Crypto do
   context 'AES crypto' do
     let(:secret) { '67b90124dae5cd46eba888705fcadb09' }
     let(:original) { 'top secret content' }
 
     before(:each) do
-      @encrypted = BinaryStorms::CivicSIPSdk::Crypto.encrypt(text: original, secret: secret)
-      @decrypted = BinaryStorms::CivicSIPSdk::Crypto.decrypt(text: @encrypted, secret: secret)
+      @encrypted = CivicSIPSdk::Crypto.encrypt(text: original, secret: secret)
+      @decrypted = CivicSIPSdk::Crypto.decrypt(text: @encrypted, secret: secret)
     end
 
     context 'when ecrypting' do
@@ -43,7 +43,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::Crypto do
     let(:data) { { 'email' => 'company.admin@example.com' } }
 
     before(:each) do
-      @jwt_token = BinaryStorms::CivicSIPSdk::Crypto.jwt_token(
+      @jwt_token = CivicSIPSdk::Crypto.jwt_token(
         app_id: app_id,
         sip_base_url: sip_base_url,
         data: data,
@@ -56,7 +56,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::Crypto do
     end
 
     it 'should decrypt the token correctly' do
-      decrypted = BinaryStorms::CivicSIPSdk::Crypto.decode_jwt_token(
+      decrypted = CivicSIPSdk::Crypto.decode_jwt_token(
         token: @jwt_token,
         public_hex_key: public_key,
         should_verify: false

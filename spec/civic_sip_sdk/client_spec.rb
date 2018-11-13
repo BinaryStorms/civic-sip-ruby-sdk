@@ -2,12 +2,12 @@
 
 require 'json'
 require 'httparty'
-require 'binary_storms/civic_sip_sdk/app_config'
-require 'binary_storms/civic_sip_sdk/user_data'
-require 'binary_storms/civic_sip_sdk/crypto'
-require 'binary_storms/civic_sip_sdk/client'
+require 'civic_sip_sdk/app_config'
+require 'civic_sip_sdk/user_data'
+require 'civic_sip_sdk/crypto'
+require 'civic_sip_sdk/client'
 
-RSpec.describe BinaryStorms::CivicSIPSdk::Client do
+RSpec.describe CivicSIPSdk::Client do
   let(:private_key) { 'bf5efd7bdde29dc28443614bfee78c3d6ee39c71e55a0437eee02bf7e3647721' }
   let(:secret) { '44bbae32d1e02bf481074177002bbdef' }
   let(:api_endpoint) { 'https://kw9lj3a57c.execute-api.us-east-1.amazonaws.com' }
@@ -22,7 +22,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::Client do
     'HJFWFl0dnEifQ.YBBljiXaqrbiftAhu6X6csDVbRLcsSNf3xZNRgQzj6Wd7v1Ilja55H_K_gO7zFzj3Qi-bc7-83SI1w6A4Y7MEA'
   end
   let(:app_config) do
-    BinaryStorms::CivicSIPSdk::AppConfig.new(
+    CivicSIPSdk::AppConfig.new(
       id: 'HyhaWO1SG',
       env: env,
       private_key: private_key,
@@ -30,7 +30,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::Client do
     )
   end
 
-  let(:client) { BinaryStorms::CivicSIPSdk::Client.new(config: app_config) }
+  let(:client) { CivicSIPSdk::Client.new(config: app_config) }
 
   context 'during a successful exchange_code' do
     before(:each) do
@@ -50,7 +50,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::Client do
     end
 
     it 'should exchange an encrypted code with an instance of UserData' do
-      expect(client.exchange_code(jwt_token: @auth_code)).to be_a(BinaryStorms::CivicSIPSdk::UserData)
+      expect(client.exchange_code(jwt_token: @auth_code)).to be_a(CivicSIPSdk::UserData)
     end
 
     it 'should return the user data with correct user id' do

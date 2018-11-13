@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'binary_storms/civic_sip_sdk/user_data'
-require 'binary_storms/civic_sip_sdk/user_data_item'
+require 'civic_sip_sdk/user_data'
+require 'civic_sip_sdk/user_data_item'
 
-RSpec.describe BinaryStorms::CivicSIPSdk::UserData do
+RSpec.describe CivicSIPSdk::UserData do
   let(:raw_user_data_items) do
     [
       {
@@ -22,14 +22,14 @@ RSpec.describe BinaryStorms::CivicSIPSdk::UserData do
   end
 
   before(:each) do
-    @user_data = BinaryStorms::CivicSIPSdk::UserData.new(
+    @user_data = CivicSIPSdk::UserData.new(
       user_id: 'user123',
       data_items: raw_user_data_items
     )
   end
 
   it 'should return a valid instance of UserData' do
-    expect(@user_data).to be_a(BinaryStorms::CivicSIPSdk::UserData)
+    expect(@user_data).to be_a(CivicSIPSdk::UserData)
   end
 
   it 'should return valid data from attr readers' do
@@ -39,7 +39,7 @@ RSpec.describe BinaryStorms::CivicSIPSdk::UserData do
 
   it 'should return correct user data by label' do
     user_data_item = @user_data.by_label(label: 'user.email')
-    expect(user_data_item).to be_a(BinaryStorms::CivicSIPSdk::UserDataItem)
+    expect(user_data_item).to be_a(CivicSIPSdk::UserDataItem)
     expect(user_data_item.label).to eq('user.email')
     expect(user_data_item.value).to eq('big.boss@example.com')
     expect(user_data_item.is_valid).to be_truthy

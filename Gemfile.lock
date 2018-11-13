@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    civic_sip_sdk (0.1.0)
+      httparty (~> 0.16)
+      jwt (= 2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,15 +65,11 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  coveralls
-  httparty (~> 0.16)
-  jwt (= 2.1.0)
+  civic_sip_sdk!
+  coveralls (~> 0.8.22)
   rake (~> 10.0)
   rspec (~> 3.0)
   webmock (~> 3.4)
-
-RUBY VERSION
-   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.2
