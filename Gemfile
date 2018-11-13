@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.5.1'
+gemspec
 
 group :development, :test do
   gem 'bundler', '~> 1.16'
