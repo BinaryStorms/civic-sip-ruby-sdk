@@ -19,4 +19,4 @@ module CivicSIPSdk
       @is_owner = is_owner
     end
   end
-  end
+end
