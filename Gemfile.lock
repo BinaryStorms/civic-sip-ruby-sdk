@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    civic_sip_sdk (0.1.1)
+    civic_sip_sdk (0.1.2)
       httparty (~> 0.16)
       jwt (= 2.1.0)
 
