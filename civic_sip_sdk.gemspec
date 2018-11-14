@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'webmock', '~> 3.4'
+  spec.add_development_dependency 'yard', '~> 0.9.16'
   # dependencies
   spec.add_dependency 'httparty', '~> 0.16'
   spec.add_dependency 'jwt', '2.1.0'
