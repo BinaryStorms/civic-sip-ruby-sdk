@@ -6,12 +6,11 @@ module CivicSIPSdk
 
     # Creates an instance of UserDataItem.
     #
-    # Args:
-    #   * <tt>label</tt> - Descriptive value identifier.
-    #   * <tt>value</tt> - Item value of requested user data.
-    #   * <tt>is_valid</tt> - Indicates whether or not the data is still considered valid on the blockchain.
-    #   * <tt>is_owner</tt> - Civic SIP service challenges the user during scope request approval to ensure
-    #                         the user is in control of the private key originally used in the issuance of the data attestation.
+    # @param label [String] Descriptive value identifier.
+    # @param value [String] Item value of requested user data.
+    # @param is_valid [String] Indicates whether or not the data is still considered valid on the blockchain.
+    # @param is_owner [String] Civic SIP service challenges the user during scope request approval to ensure
+    #   the user is in control of the private key originally used in the issuance of the data attestation.
     def initialize(label:, value:, is_valid:, is_owner:)
       @label = label
       @value = value

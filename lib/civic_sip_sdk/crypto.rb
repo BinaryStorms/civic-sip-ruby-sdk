@@ -16,9 +16,8 @@ module CivicSIPSdk
 
     # Create encrypted text using AES-128-CBC with a IV of 16 bytes
     #
-    # Args:
-    #   * <tt>text</tt> - the plain text to be encrypted
-    #   * <tt>secret</tt> - the Civic application secret in HEX format
+    # @param text [String] the plain text to be encrypted
+    # @param secret [String] the Civic application secret in HEX format
     def self.encrypt(text:, secret:)
       cipher = OpenSSL::Cipher.new(CIPHER_ALGO)
       cipher.encrypt
@@ -32,9 +31,8 @@ module CivicSIPSdk
 
     # Decrypt the encrypted text using AES-128-CBC with a IV of 32 bytes
     #
-    # Args:
-    #   * <tt>text</tt> - the encrypted text to be decrypted
-    #   * <tt>secret</tt> - the Civic application secret in HEX format
+    # @param text [String] the encrypted text to be decrypted
+    # @param secret [String] the Civic application secret in HEX format
     def self.decrypt(text:, secret:)
       cipher = OpenSSL::Cipher.new(CIPHER_ALGO)
       cipher.decrypt

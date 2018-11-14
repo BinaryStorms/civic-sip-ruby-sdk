@@ -20,8 +20,7 @@ module CivicSIPSdk
 
     # Creates a client
     #
-    # Args:
-    #   * <tt>config</tt> - an instance of CivicSIPSdk::AppConfig
+    # @param config [CivicSIPSdk::AppConfig] app_config that sets all the parameters of the client
     def initialize(config:)
       @config = config
       @test_env = ENV[ENV_VAR] == TEST_ENV
@@ -30,8 +29,8 @@ module CivicSIPSdk
     # Exchange authorization code in the form of a JWT Token for the user data
     # requested in the scope request.
     #
-    # Args:
-    #   * <tt>jwt_token</tt> - a JWT token that contains the authorization code
+    # @param jwt_token [String] a JWT token that contains the authorization code
+    # @return [CivicSIPSdk::UserData] user data returned from SIP
     def exchange_code(jwt_token:)
       json_body_str = JSON.generate('authToken' => jwt_token)
 

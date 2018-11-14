@@ -11,16 +11,15 @@ module CivicSIPSdk
       { name: :secret, error: 'Civic application secret is missing!' }
     ].freeze
 
-    # Creates a new instance of <tt>CivicSIPSdk::AppConfig</tt>.
+    # Creates a new instance of +CivicSIPSdk::AppConfig+.
     # This is used to configure the SDK connection parameters to the Civic SIP service.
     #
     # It raises an ArgumentError if any argument is nil.
     #
-    # Args:
-    #   * <tt>id</tt> - The application id.
-    #   * <tt>env</tt> - The application environment. Defaults to +:prod+ if the value is incorrect.
-    #   * <tt>private_key</tt> - The application's private signing key.
-    #   * <tt>secret</tt> - The application secret
+    # @param id [String] The application id.
+    # @param env [Symbol] The application environment. Defaults to +:prod+ if the value is incorrect.
+    # @param private_key [String] The application's private signing key.
+    # @param secret [String] The application secret
     def initialize(id:, env:, private_key:, secret:)
       @id = id
       @env = VALID_ENVS.include?(env.to_sym) ? env.to_sym : VALID_ENVS.last

@@ -9,10 +9,9 @@ module CivicSIPSdk
     # Creates a UserData insteance, which creates a list of UserDataItem instances from
     # +data_items+.
     #
-    # Args:
-    #   * <tt>user_id</tt> - user id
-    #   * <tt>data_items</tt> - a list of Hash that contains the key-value pairs for
-    #                           instantiating CivicSIPSdk::UserDataItem instances
+    # @param user_id [String] user id
+    # @param data_items [List] a list of Hash that contains the key-value pairs
+    #   for instantiating CivicSIPSdk::UserDataItem instances
     def initialize(user_id:, data_items:)
       @user_id = user_id
       @data_items = data_items
