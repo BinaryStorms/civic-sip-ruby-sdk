@@ -59,10 +59,10 @@ is_valid = an_item.is_valid
 is_owner = an_item.is_owner
 ```
 
-Access user data item by label:
+Access user data item by label with keyword args syntax:
 
 ```ruby
-an_item = user_data.by_label('contact.personal.email')
+an_item = user_data.by_label(label: 'contact.personal.email')
 label = an_item.label
 value = an_item.value
 is_valid = an_item.is_valid
